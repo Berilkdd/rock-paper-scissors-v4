@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/rps-favicon-32x32.png"
+    >
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/rps-favicon-16x16.png"
+    >
+
+    <!-- font awesome and google fonts -->
+    <script src="https://kit.fontawesome.com/c1eb0bcc3f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <h1 id="header"></h1>
+    <h2 id="message"></h2>
+    
+    <div class="game-area">
+        <div id="hands" class="hands-row">
+            <div class="player-side">
+                <img id="player-hand" class="hand">        
+            </div>
+
+            <div class="computer-side">
+                <img id="computer-hand" class="mirror hand">        
+            </div>
+        </div>    
+
+        <div class="choices-area">
+            <p id="player-message">Make your move!</p>
+            <div class="choices">
+                <img src="assets/images/rock-button.png" id="rock" alt="Rock" class="choice-btn" tabindex="0">
+                <img src="assets/images/paper-button.png" id="paper" alt="Paper" class="choice-btn" tabindex="0">
+                <img src="assets/images/scissors-button.png" id="scissors" alt="Scissors" class="choice-btn" tabindex="0">
+            </div>
+        </div>
+
+        <div id="scoreboard">
+            <p>WON: <span id="player-score">0</span></p>
+            <p>LOST: <span id="computer-score">0</span></p>
+            <p>DRAW: <span id="draw-score">0</span></p>
+        </div>
+
+        <div class="restart">
+            <button id="restart-btn">Restart Game</button>
+        </div>
+
+    </div>    
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

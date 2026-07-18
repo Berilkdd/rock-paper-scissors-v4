@@ -1,0 +1,227 @@
+/* CSS Variables */
+:root {
+    --primary-font: "Kirang Haerang", system-ui; 
+}
+
+h1 {
+  margin: 30px 0 10px;   
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: var(--primary-font);
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  font-family: var(--primary-font);
+  text-align: center;
+}
+
+p {
+margin: 6px 0 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: var(--primary-font);
+  text-align: center;
+}
+
+.game-area {
+  margin-top: 10px;  
+}
+
+.choices-area{
+  min-height: 120px;  
+}
+
+.player-side img,
+.computer-side img {
+  max-width: 160px;   
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.hands-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;   
+  min-height: 120px;       
+  overflow: hidden; 
+  padding-top: 35px;  
+  margin-bottom: 16px;     
+}
+
+.hand {
+  --hand-scale: 1;
+  --flip: 1;             
+  transform: scaleX(var(--flip)) scale(var(--hand-scale));
+  transform-origin: center;
+}
+
+.mirror {
+  --flip: -1;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  gap: 16px;                 
+  margin: 18px 0;
+}
+
+.choice-btn {
+  width: 40px;               
+  height: 40px;
+  object-fit: cover; 
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;       
+  display: inline-flex;  
+  transition: box-shadow 0.2s ease;
+  outline: none;
+}
+
+.choice-btn:hover {
+  box-shadow: 0 4px 8px gray;
+}
+
+.choice-btn:active {
+  transform: scale(0.9);
+}
+
+.choice-btn:focus-visible {
+  box-shadow: 0 4px 8px gray;
+}
+
+img.hidden {
+  display: none;
+}
+
+.restart{
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+}
+
+#restart-btn {
+  margin-top: 16px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: var(--primary-font);
+  color: #000;
+  border: 1px solid gray;
+  background: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#restart-btn:hover {
+  box-shadow: 0 4px 8px gray;
+}
+
+#restart-btn:active {
+  transform: scale(0.9);
+}
+
+/* Tablet screens (≥768px) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .hands-row {
+    justify-content: space-evenly;
+    padding-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .player-side img,
+  .computer-side img {
+    max-width: 220px;
+  }
+
+  .choice-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  #restart-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Desktop / Large screens (≥1024px) */
+@media (min-width: 1024px) {
+  body {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .hands-row {
+    min-height: 250px;
+    margin-bottom: 30px;
+  }
+
+  .player-side img,
+  .computer-side img {
+    max-width: 280px;
+  }
+
+  .choices {
+    gap: 32px;
+    margin: 24px 0;
+  }
+
+  .choice-btn {
+    width: 80px;
+    height: 80px;
+  }
+
+  #scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  #restart-btn {
+    padding: 12px 28px;
+    font-size: 18px;
+  }
+}
+
+.center-404 {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  font-family: var(--primary-font);
+}
