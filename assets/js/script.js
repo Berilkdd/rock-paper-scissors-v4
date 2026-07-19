@@ -32,56 +32,56 @@ function resetHands() {
   computerState = "rock";
 }
 
-function shake(onComplete) {  
+function shake(onComplete) {
 
   const playerHand = document.getElementById("player-hand");
   const computerHand = document.getElementById("computer-hand");
 
-  const keyframes = [
-    { time: 0, position: 0 },
-    { time: 160, position: -60 },
-    { time: 330, position: 0 },
-    { time: 500, position: -60 },
-    { time: 660, position: 0 },
-    { time: 830, position: -60 },
-    { time: 1000, position: 0 }
-  ];
-
-  let currentSegment = 0;
-  let animationStart = null;  
+  let position = 0;
+  const speed = 360;
+  let direction = -1;
+  let previousTime = null;
+  let bounceCount = 0;
 
   function update(browserTime) {
 
-    if (animationStart === null) {
-      animationStart = browserTime;
-    }    
-    const animationTime = browserTime - animationStart;
-
-    if (currentSegment >= keyframes.length - 1) {
-        playerHand.style.transform = "translateY(0px)";
-        onComplete();
-        return;
+    if (previousTime === null) {
+      previousTime = browserTime;
+      requestAnimationFrame(update);
+      return;
     }
 
-    const start = keyframes[currentSegment];
-    const end = keyframes[currentSegment + 1]; 
-    const position = calculatePosition(start, end, animationTime);
+    const deltaTime = browserTime - previousTime;
+    previousTime = browserTime;
+
+    position += direction * speed * (deltaTime / 1000);
+
+    if (position <= -60) {
+      position = -60;
+      direction = 1;
+    }
+
+    if (position >= 0) {
+      position = 0;
+      bounceCount++;
+
+      if (bounceCount >= 3) {
+        playerHand.style.transform = "translateY(0px)";
+        computerHand.style.transform = "scaleX(-1) translateY(0px)";
+        onComplete();
+        return;
+      }
+
+      direction = -1;
+    }
 
     playerHand.style.transform = `translateY(${position}px)`;
     computerHand.style.transform = `scaleX(-1) translateY(${position}px)`;
 
-      if (animationTime >= end.time) {
-        currentSegment++;
-      }
     requestAnimationFrame(update);
   }
-    
-  function calculatePosition(start, end, animationTime) {
-    const movementUnit = (end.position - start.position) / (end.time - start.time);
-    return start.position + ((animationTime - start.time) * movementUnit);  
-  }
 
-  requestAnimationFrame(update);  
+  requestAnimationFrame(update);
 }
 
 function playRound(choice) {
